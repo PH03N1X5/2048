@@ -1,0 +1,43 @@
+\section{Hardware}
+
+\subsection{Components}
+\newcommand{\ItwoC}{\textbf{I\textsuperscript2C }}
+
+\subsubsection{Main Board}
+For the main board, an Arduino mega2560 was used. The Arduino Mega 2560 is a microcontroller board based on the ATmega2560. It has 54 digital input/output pins (of which 15 can be used as PWM outputs), 16 analog inputs, 4 UARTs (hardware serial ports), a 16 MHz crystal oscillator, a USB connection, a power jack, an ICSP header, and a reset button \cite{arduino_2023_mega}.
+
+\subsubsection{Input}
+For the input, an \textbf{MPU6050} was used. 
+The \textbf{MPU6050} devices combine a 3-axis gyroscope and a 3-axis accelerometer on the same silicon die, together with an onboard Digital Motion Processor™ (DMP™), which processes complex 6-axis MotionFusion algorithms. The device can access external magnetometers or other sensors through an auxiliary master \ItwoC bus, allowing the devices to gather a full set of sensor data without intervention from the system processor. [https://invensense.tdk.com/products/motion-tracking/6-axis/mpu-6050/]
+
+\subsubsection{Display}
+For the display, an \textbf{WS2812B} NeoPixel 8x8 Led Strip was used. Even if it is called a LED Strip, it is actually a matrix, but in the code is is still 
+refered as an array.
+
+
+\subsection{Diagram}
+\includegraphics[width=1.0\linewidth]{diagram.png}
+\subsection{Connections}
+\newcommand{\colorsymbol}{\textbf{\$}}
+\newcommand{\GND}{\textcolor{black}{\colorsymbol}\textbf{GND }}
+\newcommand{\VCC}{\textcolor{red}{\colorsymbol}\textbf{VCC }}
+\newcommand{\SCL}{\textcolor{violet}{\colorsymbol}\textbf{SCL }}
+\newcommand{\SDA}{\textcolor{green}{\colorsymbol}\textbf{SDA }}
+\newcommand{\DIN}{\textcolor{gray}{\colorsymbol}\textbf{DIN }}
+This symbol "\colorsymbol" will be used to indicate what color the pin has on the diagram so it's easier to follow along. 
+
+The common ports that both components use are \VCC and \GND. 
+These connect to the dedicated \VCC and \GND ports on the board.
+
+Out of the 8 ports the \textit{input} has, only 4 are of intereset to us: \VCC, \GND, \SCL and \SDA.  \\
+\SCL (\textbf{clock}) is connected to digital port \textbf{21 (SCL)} \\
+\SDA (\textbf{data}) is connected to digital port \textbf{20 (SDA)} \\
+These are the ports of the \textbf{MPU6050} which communicate with the main board using the 
+\ItwoC protocol.  \\ 
+
+The \textit{display} has 3 ports: \VCC, \GND and \DIN. \\
+\DIN is connected to digital port \textbf{32}, but it is configurable.\\
+This is the port that controls the display, and where the data is sent.
+
+\pagebreak
+

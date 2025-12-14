@@ -1,0 +1,36 @@
+\section{Software}
+
+\subsection{Code implementation}
+
+\subsubsection{2048.h}
+\inputminted[linenos]{c}{../src/2048.h}
+
+\pagebreak
+
+\subsubsection{Main program}
+\inputminted[linenos]{c}{../src/2048.ino}
+
+\subsection{Code description}
+
+\subsubsection{2048.h}
+\texttt{2048.h} is a single header library, where common functions for the 2048 game are immplemented, such as swipe, spawn, merge, has space, etc.
+
+\subsubsection{FastLED}
+Multi-platform library for controlling dozens of different types of LEDs along with optimized math, effect, and noise functions.  \texttt{FastLED} is a fast, efficient, easy-to-use Arduino library for programming addressable LED strips and pixels such as WS2810, WS2811, LPD8806, Neopixel and more. FastLED also provides high-level math functions that can be used for generative art and graphics.  [https://docs.arduino.cc/libraries/fastled/]
+
+\subsubsection{basicMPU6050}
+lightweight library for the MPU6050.  library to configure and retrieve the raw sensor outputs of the MPU6050.  It includes simples routines to calibrate the gyro.  [https://docs.arduino.cc/libraries/basicmpu6050/]
+
+\subsubsection{setup}
+The \texttt{setup} function initializes the three essential components of the software.
+
+\subsubsection{display}
+The \texttt{display()} function is designed to render the game table on the LED matrix. It utilizes the \texttt{draw\_cell()} function, which is responsible for drawing individual cells on the LED matrix. The color of each cell can be configured using the \texttt{cell\_color()} function.
+
+\subsubsection{input}
+The \texttt{getOrientation()} function determines the orientation of the sensor. Its sensitivity can be adjusted by modifying the value of the \texttt{THRESHOLD} macro.
+
+\subsubsection{loop}
+The \texttt{loop()} function serves as the main event loop of the program, coordinating the execution of all other functions. It updates the display, retrieves the current orientation, and updates the game state using the swipe functions from the \texttt{2048.h} library.
+
+\pagebreak

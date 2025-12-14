@@ -1,0 +1,54 @@
+\documentclass[12pt]{article}
+\usepackage{times}
+
+\usepackage[
+backend=bibtex,
+style=numeric,
+sorting=ynt
+]{biblatex}
+\bibliography{refs.bib}
+
+\usepackage{blindtext}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amsfonts, amssymb, mathtools}
+\usepackage{graphicx, float}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{algorithmic}
+\usepackage{minted}
+\usemintedstyle{borland}
+
+\title{Proiectare cu MicroProcesoare - Project \\ - 2048 with Gyroscope - }
+
+\author{Donică Ion \\ Grupa: 30237}
+\date{15/12/2025}
+
+\begin{document}
+
+
+\maketitle
+\rule{\linewidth}{0.5mm}
+\begin{center}
+\vfill
+\textsc{\large Facultatea de Automatica\\si Calculatoare}\\[0.4cm]
+\end{center}
+\thispagestyle{empty}
+
+\pagebreak
+
+\tableofcontents
+\thispagestyle{empty}
+
+
+\include{introduction}
+\include{hardware}
+\include{software}
+\include{testing}
+
+\pagebreak
+
+\printbibliography
+\thispagestyle{empty}
+
+\end{document}
