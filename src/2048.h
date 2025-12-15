@@ -13,7 +13,8 @@
 
 typedef enum { left, down, up, right, } Direction;
 
-void _2048_swipe            (int table[][TABLE_SIZE], Direction d); /* Call this function once you know the direction the user pressed */
+/* Call this function once you know the direction the user pressed */
+void _2048_swipe            (int table[][TABLE_SIZE], Direction d); 
 
 void _2048_move             (int table[][TABLE_SIZE], int ref[][TABLE_SIZE], int x, int y, Direction d);
 void _2048_merge            (int table[][TABLE_SIZE], int ref[][TABLE_SIZE], int x, int y, Direction d);
@@ -26,7 +27,8 @@ void _2048_table_spawn      (int table[][TABLE_SIZE]);
 
 int old[TABLE_SIZE][TABLE_SIZE];
 
-void _2048_swipe(int table[][TABLE_SIZE], Direction d)
+void 
+_2048_swipe(int table[][TABLE_SIZE], Direction d)
 {
     int x0, xn, dx;
     int y0, yn, dy;
@@ -84,17 +86,30 @@ void _2048_swipe(int table[][TABLE_SIZE], Direction d)
 
 }
 
-void _2048_merge(int table[][TABLE_SIZE], int ref[][TABLE_SIZE], int x, int y, Direction d)
+void 
+_2048_merge(int table[][TABLE_SIZE], int ref[][TABLE_SIZE], int x, int y, Direction d)
 {
     int ox, oy; // offset
     int ax, ay; // activate x y or k
     int k0, kn, dk; // for(int k = k0; k < kn; k += dk)
     switch(d)
     {
-        case left:  ax =  1; ay =  0; ox = x  ;   oy = y-1;     k0 = y-1;  kn = -1         ;  dk = -1; break;
-        case down:  ax =  0; ay =  1; ox = x+1;   oy = y  ;     k0 = x+1;  kn = +TABLE_SIZE;  dk = +1; break;
-        case up:    ax =  0; ay =  1; ox = x-1;   oy = y  ;     k0 = x-1;  kn = -1         ;  dk = -1; break;
-        case right: ax =  1; ay =  0; ox = x  ;   oy = y+1;     k0 = y+1;  kn = +TABLE_SIZE;  dk = +1; break;
+        case left:  
+            ax =  1; ay =  0; ox = x  ;   oy = y-1;     
+            k0 = y-1;  kn = -1         ;  dk = -1; 
+            break;
+        case down:  
+            ax =  0; ay =  1; ox = x+1;   oy = y  ;     
+            k0 = x+1;  kn = +TABLE_SIZE;  dk = +1; 
+            break;
+        case up:    
+            ax =  0; ay =  1; ox = x-1;   oy = y  ;     
+            k0 = x-1;  kn = -1         ;  dk = -1; 
+            break;
+        case right: 
+            ax =  1; ay =  0; ox = x  ;   oy = y+1;     
+            k0 = y+1;  kn = +TABLE_SIZE;  dk = +1; 
+            break;
         default: break;
     }
 
@@ -117,17 +132,30 @@ void _2048_merge(int table[][TABLE_SIZE], int ref[][TABLE_SIZE], int x, int y, D
     return;
 }
 
-void _2048_move(int table[][TABLE_SIZE], int ref[][TABLE_SIZE], int x, int y, Direction d)
+void 
+_2048_move(int table[][TABLE_SIZE], int ref[][TABLE_SIZE], int x, int y, Direction d)
 {
     int ox, oy; // offset
     int ax, ay; // activate x y or k
     int k0, kn, dk; // for(int k = k0; k < kn; k += dk)
     switch(d)
     {
-        case left:  ax =  1; ay =  0; ox = x  ; oy = y-1;     k0 = y-1; kn = -1         ; dk = -1; break;
-        case down:  ax =  0; ay =  1; ox = x+1; oy = y  ;     k0 = x+1; kn = +TABLE_SIZE; dk = +1; break;
-        case up:    ax =  0; ay =  1; ox = x-1; oy = y  ;     k0 = x-1; kn = -1         ; dk = -1; break;
-        case right: ax =  1; ay =  0; ox = x  ; oy = y+1;     k0 = y+1; kn = +TABLE_SIZE; dk = +1; break;
+        case left:  
+            ax =  1; ay =  0; ox = x  ; oy = y-1;     
+            k0 = y-1; kn = -1         ; dk = -1; 
+            break;
+        case down:  
+            ax =  0; ay =  1; ox = x+1; oy = y  ;     
+            k0 = x+1; kn = +TABLE_SIZE; dk = +1; 
+            break;
+        case up:    
+            ax =  0; ay =  1; ox = x-1; oy = y  ;     
+            k0 = x-1; kn = -1         ; dk = -1; 
+            break;
+        case right: 
+            ax =  1; ay =  0; ox = x  ; oy = y+1;     
+            k0 = y+1; kn = +TABLE_SIZE; dk = +1; 
+            break;
         default: break;
     }
 
@@ -159,7 +187,8 @@ void _2048_move(int table[][TABLE_SIZE], int ref[][TABLE_SIZE], int x, int y, Di
     return;
 }
 
-bool _2048_table_has_changed(int table[][TABLE_SIZE], int old[][TABLE_SIZE])
+bool 
+_2048_table_has_changed(int table[][TABLE_SIZE], int old[][TABLE_SIZE])
 {
     for (int i = 0; i < TABLE_SIZE; i++)
         for (int j = 0; j < TABLE_SIZE; j++)
@@ -168,7 +197,8 @@ bool _2048_table_has_changed(int table[][TABLE_SIZE], int old[][TABLE_SIZE])
     return false;
 }
 
-bool _2048_table_has_space(int table[][TABLE_SIZE])
+bool 
+_2048_table_has_space(int table[][TABLE_SIZE])
 {
     for (int i = 0; i < TABLE_SIZE; i++)
         for (int j = 0; j < TABLE_SIZE; j++)
@@ -177,7 +207,8 @@ bool _2048_table_has_space(int table[][TABLE_SIZE])
     return false;
 }
 
-void _2048_table_spawn(int table[][TABLE_SIZE])
+void 
+_2048_table_spawn(int table[][TABLE_SIZE])
 {
     bool generated = false;
     if (_2048_table_has_space(table))

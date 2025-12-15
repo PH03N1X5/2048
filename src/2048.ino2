@@ -12,25 +12,60 @@ typedef enum {
 
 #include <FastLED.h>
 #define LED_PIN 32
-#define LED_BRIGHTNESS 16 // 0-255
+#define LED_BRIGHTNESS 40 // 0-255
 #define LED_COUNT 64
 CRGB leds[LED_COUNT];
 
 #include <basicMPU6050.h> 
 basicMPU6050<> mpu;
 
+int flower[LED_COUNT] = {
+    0,0,1,2,2,1,0,0,
+    0,1,2,0,0,2,1,0,
+    1,2,1,0,0,1,2,1,
+    2,0,0,1,1,0,0,2,
+    2,0,0,1,1,0,0,2,
+    1,2,1,0,0,1,2,1,
+    0,1,2,0,0,2,1,0,
+    0,0,1,2,2,1,0,0,
+};
+
+// Full color water effect
+void st(int brig) {
+    for (int i = 0; i < LED_COUNT; i++)
+    {
+        switch (flower[i])
+        {
+            case 0: leds[i] = CHSV(  0,   0,   0); break;
+            case 1: leds[i] = CHSV( 60, 255, brig); break;
+            case 2: leds[i] = CHSV(120, 255, brig); break;
+        }
+    }
+
+    FastLED.show();
+}
+
+
 #define seed() random()
 void setup() 
 {
+        Serial.begin(9600);
+        Serial.println("\nInitializing");
         srand(seed());
         _2048_table_spawn(table);
         _2048_table_spawn(table);
 
+        Serial.println("\nSetting up leds...");
         FastLED.addLeds<WS2812B, LED_PIN, GRB>(leds, LED_COUNT);
         FastLED.setBrightness(LED_BRIGHTNESS);
+        Serial.println("Done.");
+        st(80);
 
+        Serial.println("\nSetting up MPU6050...");
         mpu.setup();
         mpu.setBias();
+        Serial.println("Done.");
+
 }
 
 /*
@@ -79,15 +114,17 @@ Orientation getOrientation()
 Orientation prev_orientation = flat;
 void loop() 
 { 
+        Serial.print("loop ");
         display(table);
         Orientation curr_orientation = getOrientation();
         if (curr_orientation != prev_orientation)
                 switch (curr_orientation)
                 {
-                        case l: _2048_swipe(table, left);  break;
-                        case d: _2048_swipe(table, down);  break;
-                        case u: _2048_swipe(table, up);    break;
-                        case r: _2048_swipe(table, right); break;
+                        case l: _2048_swipe(table, left);  Serial.println("left");  break;
+                        case d: _2048_swipe(table, down);  Serial.println("down");  break;
+                        case u: _2048_swipe(table, up);    Serial.println("up");    break;
+                        case r: _2048_swipe(table, right); Serial.println("right"); break;
+                        case flat: Serial.println("flag");
                 }
 
         prev_orientation = curr_orientation;
