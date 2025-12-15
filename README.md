@@ -4,8 +4,6 @@ This project is a simple implementation of the 2048 game using C++ for microcont
 
 ![image description](doc/demo/demo4.jpg)
 
-[![Demo](doc/demo/demo1.jpg)](doc/demo/demo1.mp4)
-
 ## Table of Contents
 
 - [Configuration](#configuration)
