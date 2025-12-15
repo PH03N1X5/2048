@@ -2,6 +2,10 @@
 
 This project is a simple implementation of the 2048 game using C++ for microcontrollers. It leverages a few libraries to manage the game logic, display handling, and sensor input.
 
+![image description](doc/demo/demo4.jpg)
+
+[![Demo](doc/demo/demo1.jpg)](doc/demo/demo1.mp4)
+
 ## Table of Contents
 
 - [Configuration](#configuration)
